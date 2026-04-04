@@ -33,6 +33,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    //Penerapan ViewBinding
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
