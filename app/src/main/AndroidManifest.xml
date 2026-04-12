@@ -12,13 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dzikrirun">
         <activity
+            android:name=".pertemuan4.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pertemuan4.DetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pertemuan4.DashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".pertemuan3.ThirdResultActivity"
             android:exported="false" />
         <activity
             android:name=".pertemuan2.SecondActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".pertemuan3.ThirdActivity"
