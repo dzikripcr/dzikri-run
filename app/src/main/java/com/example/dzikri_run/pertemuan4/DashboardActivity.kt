@@ -44,14 +44,17 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //Kode ini harus selalu dipanggil saat butuh akses dengan nama "user_pref"
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
         binding.btnLogout.setOnClickListener {
             //alert dialog konfirmasi logout
             MaterialAlertDialogBuilder(this)
                 .setTitle("Konfirmasi")
                 .setMessage("Apakah Anda yakin ingin melanjutkan?")
                 .setPositiveButton("Ya") { dialog, _ ->
-                    dialog.dismiss()
-                    Log.e("Info Dialog","Anda telah logout!")
+                    val editor = sharedPref.edit()
+                    editor.clear()
 
                     //pindah ke halaman login
                     val intent = Intent(this, ThirdActivity::class.java)

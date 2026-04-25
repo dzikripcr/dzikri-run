@@ -10,6 +10,7 @@
     <color name="logout">#E20000</color>
     <color name="bg_detail_product">#F2F3F2</color>
     <color name="garis_pemisah">#E0E0E0</color>
+    <color name="green">#53B175</color>
 
 
 </resources>

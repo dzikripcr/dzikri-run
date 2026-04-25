@@ -2,13 +2,16 @@ package com.example.dzikri_run.pertemuan3
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.dzikri_run.MainActivity
 import com.example.dzikri_run.R
 import com.example.dzikri_run.databinding.ActivityThirdBinding
-import com.example.dzikri_run.pertemuan4.DashboardActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import androidx.core.content.edit
 
 class ThirdActivity : AppCompatActivity() {
 
@@ -27,12 +30,40 @@ class ThirdActivity : AppCompatActivity() {
             insets
         }
 
-        binding.btnLogin.setOnClickListener {
-            val username = binding.username.text
-            val password = binding.password.text
+        //Kode ini harus selalu dipanggil saat butuh akses "user_pref"
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
-            val intent = Intent(this, ThirdResultActivity::class.java)
+        //Kondisi jika isLogin bernilai true
+        val isLogin = sharedPref.getBoolean("isLogin", false)
+        if (isLogin) {
+            //Panggil Intent untuk ke MainActivity
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.btnLogin.setOnClickListener {
+            val username = binding.username.text.toString()
+            val password = binding.password.text.toString()
+
+            if (username == password && username.isNotEmpty() && password.isNotEmpty()){
+                sharedPref.edit {
+                    putBoolean("isLogin", true)
+                    putString("username", username)
+                }
+
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+
+            }else{
+                MaterialAlertDialogBuilder(this)
+                    .setTitle("Gagal")
+                    .setMessage("Silahkan coba lagi")
+                    .setPositiveButton("Close") { dialog, _ ->
+                        dialog.dismiss()
+                        Log.e("Info Dialog","Anda mengklik close pop up!")
+                    }
+                    .show()
+            }
         }
     }
 }
