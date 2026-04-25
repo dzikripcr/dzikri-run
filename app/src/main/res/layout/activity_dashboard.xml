@@ -76,7 +76,7 @@
         android:layout_marginHorizontal="60dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/primary"
-        android:text="Ayo belanja sekarang!"
+        android:text="Detail Product"
         android:textSize="12sp"
         android:fontFamily="@font/poppins_regular"
         android:textColor="@color/white"

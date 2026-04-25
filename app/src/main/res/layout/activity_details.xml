@@ -20,12 +20,25 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/judulDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Details Product"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/bwgMerah"
-                android:layout_width="260dp"
-                android:layout_height="260dp"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:layout_marginTop="22dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -35,12 +48,11 @@
                 android:id="@+id/kembali"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:layout_marginTop="30dp"
                 android:layout_marginStart="15dp"
+                android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/gambar_back_button" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
