@@ -12,6 +12,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.dzikri_run.databinding.ActivityMainBinding
 import com.example.dzikri_run.pertemuan3.ThirdActivity
+import com.example.dzikri_run.pertemuan4.CartActivity
+import com.example.dzikri_run.pertemuan4.DetailsActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
@@ -51,7 +53,6 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
 
             R.id.action_logout -> {
-                Toast.makeText(this, "Logout Clicked", Toast.LENGTH_SHORT).show()
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Konfirmasi")
                     .setMessage("Apakah Anda yakin ingin melanjutkan?")
@@ -71,22 +72,22 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.action_profile -> {
-                Toast.makeText(this, "Profile Clicked", Toast.LENGTH_SHORT).show()
                 true
             }
 
             R.id.action_cart -> {
-                Toast.makeText(this, "Cart Clicked", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, CartActivity::class.java)
+                startActivity(intent)
                 true
             }
 
-            R.id.action_favorite -> {
-                Toast.makeText(this, "Favorite Clicked", Toast.LENGTH_SHORT).show()
+            R.id.action_detail -> {
+                val intent = Intent(this, DetailsActivity::class.java)
+                startActivity(intent)
                 true
             }
 
             R.id.action_settings -> {
-                Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show()
                 true
             }
 
