@@ -1,30 +1,30 @@
-package com.example.dzikri_run
+package com.example.dzikri_run.pertemuan6
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
+import android.webkit.WebViewClient
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.dzikri_run.databinding.ActivityMainBinding
+import com.example.dzikri_run.R
+import com.example.dzikri_run.databinding.ActivityWebViewBinding
 import com.example.dzikri_run.pertemuan3.ThirdActivity
 import com.example.dzikri_run.pertemuan4.CartActivity
 import com.example.dzikri_run.pertemuan4.DetailsActivity
-import com.example.dzikri_run.pertemuan6.WebViewActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class MainActivity : AppCompatActivity() {
+class WebViewActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityWebViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityWebViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -32,19 +32,34 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.btnWebView.setOnClickListener {
-            val intent = Intent(this, WebViewActivity::class.java)
-            startActivity(intent)
-        }
-
+        // Mengaktifkan toolbar
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
-            title = "Home"
-            subtitle = "Silahkan berbelanja!"
+            title = "Web Bina Desa"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
         }
 
+        binding.webView.webViewClient = WebViewClient()
+        binding.webView.settings.javaScriptEnabled = true
+        binding.webView.loadUrl("https://dzikri.alwaysdata.net/")
+        // Agar Toolbar hide/show saat scroll web
+        binding.webView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
+            if (scrollY > oldScrollY) {
+                binding.appBar.setExpanded(false, true) // sembunyikan
+            } else if (scrollY < oldScrollY) {
+                binding.appBar.setExpanded(true, true) // tampilkan
+            }
+        }
+
+    }
+
+    override fun onBackPressed() {
+        if (binding.webView.canGoBack()) {
+            binding.webView.goBack() // Kembali ke halaman web sebelumnya
+        } else {
+            super.onBackPressed() // Keluar activity sebelumnya
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -57,6 +72,12 @@ class MainActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
         return when (item.itemId) {
+
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                finish()
+                true
+            }
 
             R.id.action_logout -> {
                 MaterialAlertDialogBuilder(this)
@@ -100,5 +121,4 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }
