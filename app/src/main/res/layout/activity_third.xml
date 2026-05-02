@@ -7,7 +7,7 @@
     android:backgroundTint="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pertemuan3.ThirdActivity">
+    tools:context=".Home.pertemuan3.ThirdActivity">
 
   <ImageView
       android:id="@+id/logo"

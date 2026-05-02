@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <!-- permission untuk mendapat izin akses internet -->
+    <!-- permission untuk mendapat izin akses internet SAS -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,31 +14,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dzikrirun">
         <activity
-            android:name=".pertemuan6.WebViewActivity"
+            android:name=".BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan3.ThirdActivity"
+            android:name=".AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan4.CartActivity"
+            android:name=".Home.pertemuan7.SeventhActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan4.DetailsActivity"
+            android:name=".Home.pertemuan6.WebViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home.pertemuan3.ThirdActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home.pertemuan4.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home.pertemuan4.DetailsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan4.DashboardActivity"
+            android:name=".Home.pertemuan4.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan3.ThirdResultActivity"
+            android:name=".Home.pertemuan3.ThirdResultActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan2.SecondActivity"
+            android:name=".Home.pertemuan2.SecondActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan6.SplashScreenActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

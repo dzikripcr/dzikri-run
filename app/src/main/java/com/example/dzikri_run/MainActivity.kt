@@ -4,17 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.dzikri_run.databinding.ActivityMainBinding
-import com.example.dzikri_run.pertemuan3.ThirdActivity
-import com.example.dzikri_run.pertemuan4.CartActivity
-import com.example.dzikri_run.pertemuan4.DetailsActivity
-import com.example.dzikri_run.pertemuan6.WebViewActivity
+import com.example.dzikri_run.Home.pertemuan4.CartActivity
+import com.example.dzikri_run.Home.pertemuan4.DetailsActivity
+import com.example.dzikri_run.Home.pertemuan6.WebViewActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
@@ -66,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                         sharedPref.edit {
                             clear()
                         }
-                        val intent = Intent(this, ThirdActivity::class.java)
+                        val intent = Intent(this, AuthActivity::class.java)
                         startActivity(intent)
                         finish()
                     }

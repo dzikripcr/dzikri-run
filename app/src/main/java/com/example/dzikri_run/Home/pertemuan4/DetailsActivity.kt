@@ -1,4 +1,4 @@
-package com.example.dzikri_run.pertemuan4
+package com.example.dzikri_run.Home.pertemuan4
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,20 +9,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.dzikri_run.MainActivity
 import com.example.dzikri_run.R
-import com.example.dzikri_run.databinding.ActivityCartBinding
-import com.example.dzikri_run.pertemuan3.ThirdActivity
+import com.example.dzikri_run.databinding.ActivityDetailsBinding
+import com.example.dzikri_run.Home.pertemuan3.ThirdActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class CartActivity : AppCompatActivity() {
+class DetailsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityCartBinding
+    private lateinit var binding: ActivityDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityCartBinding.inflate(layoutInflater)
+        binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -32,8 +31,8 @@ class CartActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
-            title = "Cart"
-            subtitle = "Silahkan checkout!"
+            title = "Detail"
+            subtitle = "Melihat detail produk!"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
         }
