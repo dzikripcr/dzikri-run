@@ -48,40 +48,4 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
     }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.main_menu, menu)
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        //Kode ini harus selalu dipanggil saat butuh akses "user_pref"
-        val sharedPref = requireContext().getSharedPreferences("user_pref", MODE_PRIVATE)
-
-        return when (item.itemId) {
-
-
-
-            R.id.action_profile -> {
-                true
-            }
-
-            R.id.action_cart -> {
-                val intent = Intent(requireContext(), CartActivity::class.java)
-                startActivity(intent)
-                true
-            }
-
-            R.id.action_detail -> {
-                val intent = Intent(requireContext(), DetailsActivity::class.java)
-                startActivity(intent)
-                true
-            }
-
-            R.id.action_settings -> {
-                true
-            }
-
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 }
