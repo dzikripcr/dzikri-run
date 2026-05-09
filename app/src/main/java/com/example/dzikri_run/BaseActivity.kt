@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.dzikri_run.About.AboutFragment
 import com.example.dzikri_run.Home.HomeFragment
+import com.example.dzikri_run.Notification.NotificationFragment
 import com.example.dzikri_run.Profile.ProfileFragment
 import com.example.dzikri_run.databinding.ActivityBaseBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -47,6 +48,10 @@ class BaseActivity : AppCompatActivity() {
                 }
                 R.id.profile -> {
                     replaceFragment(ProfileFragment())
+                    true
+                }
+                R.id.notif -> {
+                    replaceFragment(NotificationFragment())
                     true
                 }
                 R.id.logout -> {

@@ -17,6 +17,11 @@
         android:title="Profile" />
 
     <item
+        android:id="@+id/notif"
+        android:icon="@drawable/ic_notif"
+        android:title="Notifikasi" />
+
+    <item
         android:id="@+id/logout"
         android:title="Log Out"
         android:icon="@drawable/ic_logout" />
