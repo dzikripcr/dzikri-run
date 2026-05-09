@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.dzikri_run.R
 import com.example.dzikri_run.databinding.FragmentNotificationBinding
 import com.example.dzikri_run.databinding.FragmentProfileBinding
+import com.google.android.material.chip.Chip
 
 class NotificationFragment : Fragment() {
 
@@ -87,6 +88,15 @@ class NotificationFragment : Fragment() {
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
             title = "Notificaion"
+        }
+
+        binding.chipGroupFilter.setOnCheckedStateChangeListener { group, checkedIds ->
+            val selectedChipId = checkedIds.firstOrNull() // Ambil ID chip yang dipilih
+            if (selectedChipId != null) {
+                val chip = group.findViewById<Chip>(selectedChipId)
+                Toast.makeText(requireContext(), "Filter: ${chip.text}", Toast.LENGTH_SHORT).show()
+                // Lakukan logika filter di sini
+            }
         }
 
         val adapter = NotifAdapter(requireContext(), notifList)
