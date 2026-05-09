@@ -5,7 +5,7 @@
     <color name="welcome">#32343d</color>
     <color name="facebook">#3874CB</color>
     <color name="abu_abu">#9E9E9E</color>
-    <color name="bg_input">#F6F6F7</color>
+    <color name="bg_input">#EFEFEF</color>
     <color name="primary">#F6770D</color>
     <color name="logout">#E20000</color>
     <color name="bg_detail_product">#F2F3F2</color>

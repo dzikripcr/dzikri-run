@@ -34,12 +34,12 @@ class AuthActivity : AppCompatActivity() {
 //        if (isLogin) {
 //            //Panggil Intent untuk ke MainActivity
 //            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)S
+//            startActivity(intent)
 //        }
 
         binding.btnLogin.setOnClickListener {
-            val username = binding.username.text.toString()
-            val password = binding.password.text.toString()
+            val username = binding.etUsername.text.toString()
+            val password = binding.etPassword.text.toString()
 
             if (username == password && username.isNotEmpty() && password.isNotEmpty()){
                 sharedPref.edit {
