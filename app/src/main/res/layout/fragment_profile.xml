@@ -176,7 +176,7 @@
                         android:id="@+id/header_tentang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tentang"
+                        android:text="📋Tentang"
                         android:textSize="16sp"
                         android:fontFamily="@font/poppins_semibold"
                         app:layout_constraintTop_toTopOf="parent"
@@ -225,7 +225,7 @@
                         android:id="@+id/header_skill"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Skills"
+                        android:text="🚀Skills"
                         android:textSize="16sp"
                         android:fontFamily="@font/poppins_semibold" />
 
