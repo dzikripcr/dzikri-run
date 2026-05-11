@@ -62,5 +62,10 @@ class AuthActivity : AppCompatActivity() {
                     .show()
             }
         }
+
+        binding.btnGoogle.setOnClickListener {
+            val intent = Intent(this, InputGmailActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
