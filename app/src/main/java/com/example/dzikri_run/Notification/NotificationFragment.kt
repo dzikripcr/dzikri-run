@@ -87,7 +87,7 @@ class NotificationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
-            title = "Notificaion"
+            title = "Notification"
         }
 
         binding.chipGroupFilter.setOnCheckedStateChangeListener { group, checkedIds ->
