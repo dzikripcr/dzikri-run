@@ -27,7 +27,7 @@ class AuthActivity : AppCompatActivity() {
         }
 
         //Kode ini harus selalu dipanggil saat butuh akses "user_pref"
-        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("USER_DATA", MODE_PRIVATE)
 
 //        //Kondisi jika isLogin bernilai true
 //        val isLogin = sharedPref.getBoolean("isLogin", false)
@@ -68,26 +68,7 @@ class AuthActivity : AppCompatActivity() {
 
             when {
 
-                // kondisi 1
-                username == password &&
-                        username.isNotEmpty() &&
-                        password.isNotEmpty() -> {
-
-                    sharedPref.edit {
-
-                        putBoolean("isLogin", true)
-                        putString("username", username)
-
-                    }
-
-                    val intent =
-                        Intent(this, BaseActivity::class.java)
-
-                    startActivity(intent)
-                    finish()
-                }
-
-                // kondisi 2
+                // kondisi
                 username == savedUsername &&
                         password == savedPassword -> {
 
