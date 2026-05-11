@@ -41,25 +41,86 @@ class AuthActivity : AppCompatActivity() {
             val username = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
 
-            if (username == password && username.isNotEmpty() && password.isNotEmpty()){
-                sharedPref.edit {
-                    putBoolean("isLogin", true)
-                    putString("username", username)
+//            if (username == password && username.isNotEmpty() && password.isNotEmpty()){
+//                sharedPref.edit {
+//                    putBoolean("isLogin", true)
+//                    putString("username", username)
+//                }
+//
+//                val intent = Intent(this, BaseActivity::class.java)
+//                startActivity(intent)
+//                finish()
+//
+//            }else{
+//                MaterialAlertDialogBuilder(this)
+//                    .setTitle("Gagal")
+//                    .setMessage("Silahkan coba lagi")
+//                    .setPositiveButton("Close") { dialog, _ ->
+//                        dialog.dismiss()
+//                        Log.e("Info Dialog","Anda mengklik close pop up!")
+//                    }
+//                    .show()
+//            }
+
+            // ambil data dari SharedPreferences
+            val savedUsername = sharedPref.getString("USERNAME", "")
+            val savedPassword = sharedPref.getString("PASSWORD", "")
+
+            when {
+
+                // kondisi 1
+                username == password &&
+                        username.isNotEmpty() &&
+                        password.isNotEmpty() -> {
+
+                    sharedPref.edit {
+
+                        putBoolean("isLogin", true)
+                        putString("username", username)
+
+                    }
+
+                    val intent =
+                        Intent(this, BaseActivity::class.java)
+
+                    startActivity(intent)
+                    finish()
                 }
 
-                val intent = Intent(this, BaseActivity::class.java)
-                startActivity(intent)
-                finish()
+                // kondisi 2
+                username == savedUsername &&
+                        password == savedPassword -> {
 
-            }else{
-                MaterialAlertDialogBuilder(this)
-                    .setTitle("Gagal")
-                    .setMessage("Silahkan coba lagi")
-                    .setPositiveButton("Close") { dialog, _ ->
-                        dialog.dismiss()
-                        Log.e("Info Dialog","Anda mengklik close pop up!")
+                    sharedPref.edit {
+
+                        putBoolean("isLogin", true)
+                        putString("username", username)
+
                     }
-                    .show()
+
+                    val intent =
+                        Intent(this, BaseActivity::class.java)
+
+                    startActivity(intent)
+                    finish()
+                }
+
+                else -> {
+
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle("Login Gagal")
+                        .setMessage("Username atau Password salah")
+                        .setPositiveButton("Close") { dialog, _ ->
+
+                            dialog.dismiss()
+
+                            Log.e(
+                                "Info Dialog",
+                                "Anda mengklik close pop up!"
+                            )
+                        }
+                        .show()
+                }
             }
         }
 
