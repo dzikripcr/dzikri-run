@@ -27,7 +27,7 @@ class AuthActivity : AppCompatActivity() {
         }
 
         //Kode ini harus selalu dipanggil saat butuh akses "user_pref"
-        val sharedPref = getSharedPreferences("USER_DATA", MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
 //        //Kondisi jika isLogin bernilai true
 //        val isLogin = sharedPref.getBoolean("isLogin", false)
@@ -41,30 +41,9 @@ class AuthActivity : AppCompatActivity() {
             val username = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
 
-//            if (username == password && username.isNotEmpty() && password.isNotEmpty()){
-//                sharedPref.edit {
-//                    putBoolean("isLogin", true)
-//                    putString("username", username)
-//                }
-//
-//                val intent = Intent(this, BaseActivity::class.java)
-//                startActivity(intent)
-//                finish()
-//
-//            }else{
-//                MaterialAlertDialogBuilder(this)
-//                    .setTitle("Gagal")
-//                    .setMessage("Silahkan coba lagi")
-//                    .setPositiveButton("Close") { dialog, _ ->
-//                        dialog.dismiss()
-//                        Log.e("Info Dialog","Anda mengklik close pop up!")
-//                    }
-//                    .show()
-//            }
-
             // ambil data dari SharedPreferences
-            val savedUsername = sharedPref.getString("USERNAME", "")
-            val savedPassword = sharedPref.getString("PASSWORD", "")
+            val savedUsername = sharedPref.getString("username", username)
+            val savedPassword = sharedPref.getString("password", password)
 
             when {
 

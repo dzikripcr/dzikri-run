@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import android.content.SharedPreferences
 import com.example.dzikri_run.databinding.ActivityRegisterBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import androidx.core.content.edit
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -28,9 +29,9 @@ class RegisterActivity : AppCompatActivity() {
             insets
         }
 
-        sharedPreferences = getSharedPreferences("USER_DATA", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE)
 
-        val email = intent.getStringExtra("EMAIL")
+        val email = intent.getStringExtra("email")
         binding.etEmail.setText(email)
 
         binding.btnRegister.setOnClickListener {
@@ -81,14 +82,14 @@ class RegisterActivity : AppCompatActivity() {
         password: String
     ) {
 
-        val editor = sharedPreferences.edit()
+        sharedPreferences.edit {
 
-        editor.putString("NAMA", nama)
-        editor.putString("EMAIL", email)
-        editor.putString("USERNAME", username)
-        editor.putString("PASSWORD", password)
+            putString("nama", nama)
+            putString("email", email)
+            putString("username", username)
+            putString("password", password)
 
-        editor.apply()
+        }
     }
 
     private fun showError(message: String) {

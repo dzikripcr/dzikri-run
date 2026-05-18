@@ -41,7 +41,7 @@ class InputGmailActivity : AppCompatActivity() {
                 else -> {
 
                     val intent = Intent(this, RegisterActivity::class.java)
-                    intent.putExtra("EMAIL", email)
+                    intent.putExtra("email", email)
                     startActivity(intent)
 
                 }

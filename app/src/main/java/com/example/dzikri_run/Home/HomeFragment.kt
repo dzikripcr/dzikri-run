@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import com.example.dzikri_run.AuthActivity
+import com.example.dzikri_run.Home.pertemuan10.TenthActivity
 import com.example.dzikri_run.Home.pertemuan4.CartActivity
 import com.example.dzikri_run.Home.pertemuan4.DetailsActivity
 import com.example.dzikri_run.Home.pertemuan6.WebViewActivity
@@ -45,6 +46,11 @@ class HomeFragment : Fragment() {
 
         binding.btnWebView.setOnClickListener {
             val intent = Intent(requireContext(), WebViewActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnToTenth.setOnClickListener {
+            val intent = Intent(requireContext(), TenthActivity::class.java)
             startActivity(intent)
         }
     }

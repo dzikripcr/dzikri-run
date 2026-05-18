@@ -50,10 +50,6 @@ class BaseActivity : AppCompatActivity() {
                     replaceFragment(ProfileFragment())
                     true
                 }
-                R.id.notif -> {
-                    replaceFragment(NotificationFragment())
-                    true
-                }
                 R.id.logout -> {
                     MaterialAlertDialogBuilder(this)
                         .setTitle("Logout")
