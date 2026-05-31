@@ -38,6 +38,7 @@ class WebViewActivity : AppCompatActivity() {
             title = "Web Bina Desa"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_back)
         }
 
         binding.webView.webViewClient = WebViewClient()
@@ -62,59 +63,10 @@ class WebViewActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        //Kode ini harus selalu dipanggil saat butuh akses "user_pref"
-        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
-
         return when (item.itemId) {
-
             android.R.id.home -> {
                 onBackPressedDispatcher.onBackPressed()
-                finish()
-                true
-            }
-
-            R.id.action_logout -> {
-                MaterialAlertDialogBuilder(this)
-                    .setTitle("Konfirmasi")
-                    .setMessage("Apakah Anda yakin ingin melanjutkan?")
-                    .setPositiveButton("Ya") { dialog, _ ->
-                        sharedPref.edit {
-                            clear()
-                        }
-                        val intent = Intent(this, ThirdActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    }
-                    .setNegativeButton("Batal") { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .show()
-                true
-            }
-
-            R.id.action_profile -> {
-                true
-            }
-
-            R.id.action_cart -> {
-                val intent = Intent(this, CartActivity::class.java)
-                startActivity(intent)
-                true
-            }
-
-            R.id.action_detail -> {
-                val intent = Intent(this, DetailsActivity::class.java)
-                startActivity(intent)
-                true
-            }
-
-            R.id.action_settings -> {
                 true
             }
 

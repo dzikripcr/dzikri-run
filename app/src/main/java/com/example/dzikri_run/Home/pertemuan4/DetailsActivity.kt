@@ -35,6 +35,7 @@ class DetailsActivity : AppCompatActivity() {
             subtitle = "Melihat detail produk!"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_back)
         }
     }
 

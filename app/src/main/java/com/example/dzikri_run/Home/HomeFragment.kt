@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import com.example.dzikri_run.AuthActivity
 import com.example.dzikri_run.Home.pertemuan10.TenthActivity
+import com.example.dzikri_run.Home.pertemuan2.SecondActivity
 import com.example.dzikri_run.Home.pertemuan4.CartActivity
 import com.example.dzikri_run.Home.pertemuan4.DetailsActivity
 import com.example.dzikri_run.Home.pertemuan6.WebViewActivity
@@ -51,6 +52,11 @@ class HomeFragment : Fragment() {
 
         binding.btnToTenth.setOnClickListener {
             val intent = Intent(requireContext(), TenthActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnToSecond.setOnClickListener {
+            val intent = Intent(requireContext(), SecondActivity::class.java)
             startActivity(intent)
         }
     }

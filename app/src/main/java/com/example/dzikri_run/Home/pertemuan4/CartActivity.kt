@@ -35,6 +35,7 @@ class CartActivity : AppCompatActivity() {
             subtitle = "Silahkan checkout!"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_back)
         }
     }
 

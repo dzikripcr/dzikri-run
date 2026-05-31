@@ -85,6 +85,7 @@ class DashboardActivity : AppCompatActivity() {
             subtitle = "Silahkan checkout!"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_back)
         }
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

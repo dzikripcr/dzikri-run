@@ -30,6 +30,7 @@ class TenthActivity : AppCompatActivity() {
             title = "Layanan"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_back)
         }
 
         // 1. Inisialisasi Adapter

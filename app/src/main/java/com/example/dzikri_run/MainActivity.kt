@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             title = "Home"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_back)
         }
 
     }
