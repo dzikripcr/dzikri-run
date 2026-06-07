@@ -72,3 +72,6 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
     ksp ("androidx.room:room-compiler:$room_version")
 }
+ksp {
+    arg("room.generateKotlin", "true")
+}

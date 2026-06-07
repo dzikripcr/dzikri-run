@@ -4,11 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.dzikri_run.data.entity.ProyekEntity
 import com.example.dzikri_run.databinding.ItemProyekBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ProyekAdapter(
-    private val proyekList: List<ProyekModel>,
-    private val onItemClick: (ProyekModel) -> Unit
+    private val proyekList: List<ProyekEntity>,
+    private val proyekFragment: TabDataProyekFragment,
+    private val onItemClick: (ProyekEntity) -> Unit
 ) : RecyclerView.Adapter<ProyekAdapter.ProyekViewHolder>() {
 
     inner class ProyekViewHolder(val binding: ItemProyekBinding)
@@ -32,8 +35,26 @@ class ProyekAdapter(
                 .load(item.gambarProyek)
                 .into(imgProyek)
 
+            // Klik pada seluruh card/item
             root.setOnClickListener {
                 onItemClick(item)
+            }
+
+            btnDelete.setOnClickListener {
+                MaterialAlertDialogBuilder(holder.itemView.context)
+                    .setTitle("Hapus Proyek")
+                    .setMessage("Apakah kamu yakin ingin menghapus proyek ini?")
+                    .setPositiveButton("Ya") { dialog, _ ->
+
+                        // Panggil fungsi delete di Fragment
+                        proyekFragment.deleteProyek(item)
+                        dialog.dismiss()
+
+                    }
+                    .setNegativeButton("Batal") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
             }
         }
     }
