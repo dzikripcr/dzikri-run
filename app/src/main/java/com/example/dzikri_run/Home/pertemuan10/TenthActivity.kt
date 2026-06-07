@@ -14,6 +14,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class TenthActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTenthBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -45,14 +46,15 @@ class TenthActivity : AppCompatActivity() {
             when (position) {
                 0 -> {
                     tab.text = "Proyek"
-                    //Tambah Icon
-                    tab.icon = ContextCompat.getDrawable(  this, R.drawable.ic_proyek)
+                    tab.icon = ContextCompat.getDrawable(this, R.drawable.ic_proyek)
                 }
                 1 -> {
+                    tab.text = "Warga"
+                    tab.icon = ContextCompat.getDrawable(this, R.drawable.ic_warga)
+                }
+                2 -> {
                     tab.text = "Notifikasi"
-                    //Tambah Icon
-                    tab.icon = ContextCompat.getDrawable(  this, R.drawable.ic_notif)
-                    //Tambah Badge dengan nomor
+                    tab.icon = ContextCompat.getDrawable(this, R.drawable.ic_notif)
                     val badge = tab.getOrCreateBadge()
                     badge.isVisible = true
                     badge.number = 10
@@ -67,7 +69,6 @@ class TenthActivity : AppCompatActivity() {
                 onBackPressedDispatcher.onBackPressed()
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }
