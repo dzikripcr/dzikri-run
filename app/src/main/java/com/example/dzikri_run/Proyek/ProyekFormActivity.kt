@@ -1,6 +1,7 @@
 package com.example.dzikri_run.Proyek
 
 import android.Manifest
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -16,6 +17,7 @@ import com.example.dzikri_run.data.entity.ProyekEntity
 import com.example.dzikri_run.databinding.ActivityProyekFormBinding
 import com.example.dzikri_run.utils.NotificationHelper
 import com.example.dzikri_run.utils.PermissionHelper
+import com.example.dzikri_run.utils.ReminderHelper
 import kotlinx.coroutines.launch
 
 class ProyekFormActivity : AppCompatActivity() {
@@ -94,12 +96,26 @@ class ProyekFormActivity : AppCompatActivity() {
                 Toast.makeText(this, "Mohon isi semua kolom data!", Toast.LENGTH_SHORT).show()
             }
 
-            NotificationHelper.showNotification(
-                this, //Jika panggil di fragment maka requireContext()
-                "Notifikasi",
-                "Halo $nama, Berhasil ditambahkan!",
-                intent
+//            NotificationHelper.showNotification(
+//                this,
+//                "Notifikasi",
+//                "Halo $nama, Berhasil ditambahkan!",
+//                intent
+//            )
+
+            val calendar = Calendar.getInstance().apply {
+                add(Calendar.MINUTE, 1) // Tambah 1 menit dari sekarang
+            }
+
+            ReminderHelper.setReminder(
+                context = this,
+                hour = calendar.get(Calendar.HOUR_OF_DAY),
+                minute = calendar.get(Calendar.MINUTE),
+                title = "Reminder 1 Menit",
+                message = "Halo $nama, reminder ini muncul 1 menit setelah tombol ditekan",
+                targetActivity = ProyekFormActivity::class.java
             )
+            Toast.makeText(this, "Silahkan tunggu 1 Menit untuk menerima Notifikasi...", Toast.LENGTH_SHORT).show()
         }
     }
 
