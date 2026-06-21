@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.dzikri_run.Home.pertemuan10.TenthActivity
 import com.example.dzikri_run.R
 import com.example.dzikri_run.data.AppDatabase
 import com.example.dzikri_run.data.entity.ProyekEntity
@@ -113,7 +114,7 @@ class ProyekFormActivity : AppCompatActivity() {
                 minute = calendar.get(Calendar.MINUTE),
                 title = "Reminder 1 Menit",
                 message = "Halo $nama, reminder ini muncul 1 menit setelah tombol ditekan",
-                targetActivity = ProyekFormActivity::class.java
+                targetActivity = TenthActivity::class.java
             )
             Toast.makeText(this, "Silahkan tunggu 1 Menit untuk menerima Notifikasi...", Toast.LENGTH_SHORT).show()
         }

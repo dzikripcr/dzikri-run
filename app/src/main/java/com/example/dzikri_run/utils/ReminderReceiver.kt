@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import com.example.dzikri_run.BaseActivity
+import com.example.dzikri_run.Home.pertemuan10.TenthActivity
 
 class ReminderReceiver : BroadcastReceiver() {
 
@@ -22,6 +23,10 @@ class ReminderReceiver : BroadcastReceiver() {
             val clazz = Class.forName(targetClassName)
             Intent(context, clazz).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                if (clazz == TenthActivity::class.java) {
+                    putExtra(TenthActivity.EXTRA_OPEN_TAB, TenthActivity.TAB_NOTIFIKASI)
+                }
             }
         } else {
             Intent(context, BaseActivity::class.java)

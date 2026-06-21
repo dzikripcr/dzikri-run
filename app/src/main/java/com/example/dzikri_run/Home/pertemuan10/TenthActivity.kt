@@ -1,5 +1,6 @@
 package com.example.dzikri_run.Home.pertemuan10
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +15,13 @@ import com.google.android.material.tabs.TabLayoutMediator
 class TenthActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTenthBinding
+
+    companion object {
+        const val EXTRA_OPEN_TAB = "open_tab"
+        const val TAB_PROYEK = 0
+        const val TAB_WARGA = 1
+        const val TAB_NOTIFIKASI = 2
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,15 +42,10 @@ class TenthActivity : AppCompatActivity() {
             setHomeAsUpIndicator(R.drawable.ic_back)
         }
 
-        // 1. Inisialisasi Adapter
         val tabsAdapter = TenthTabsAdapter(this)
-
-        // 2. Set adapter ke ViewPager2
         binding.viewPager.adapter = tabsAdapter
 
-        // 3. Hubungkan TabLayout & ViewPager2 menggunakan Adapter
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            // Atur judul untuk setiap tab
             when (position) {
                 0 -> {
                     tab.text = "Proyek"
@@ -61,6 +64,24 @@ class TenthActivity : AppCompatActivity() {
                 }
             }
         }.attach()
+
+        // Kalau Activity ini dibuka lewat klik notifikasi, pindah ke tab yang dituju
+        handleOpenTabIntent(intent)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        handleOpenTabIntent(intent)
+    }
+
+    private fun handleOpenTabIntent(intent: Intent?) {
+        val tabIndex = intent?.getIntExtra(EXTRA_OPEN_TAB, -1) ?: -1
+        if (tabIndex in TAB_PROYEK..TAB_NOTIFIKASI) {
+            binding.viewPager.post {
+                binding.viewPager.currentItem = tabIndex
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
