@@ -1,9 +1,11 @@
 package com.example.dzikri_run.Proyek
 
+import android.Manifest
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -12,12 +14,23 @@ import com.example.dzikri_run.R
 import com.example.dzikri_run.data.AppDatabase
 import com.example.dzikri_run.data.entity.ProyekEntity
 import com.example.dzikri_run.databinding.ActivityProyekFormBinding
+import com.example.dzikri_run.utils.NotificationHelper
+import com.example.dzikri_run.utils.PermissionHelper
 import kotlinx.coroutines.launch
 
 class ProyekFormActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProyekFormBinding
     private lateinit var db: AppDatabase // Deklarasi database
+
+    private val notificationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                Toast.makeText(this, "Notifikasi diizinkan", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Notifikasi ditolak", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +41,16 @@ class ProyekFormActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        if (PermissionHelper.isNotificationPermissionRequired()) {
+            val permission = Manifest.permission.POST_NOTIFICATIONS
+            if (!PermissionHelper.hasPermission(this, permission)) {
+                PermissionHelper.requestPermission(
+                    notificationPermissionLauncher,
+                    permission
+                )
+            }
         }
 
         setSupportActionBar(binding.toolbar)
@@ -70,6 +93,13 @@ class ProyekFormActivity : AppCompatActivity() {
                 // Menampilkan peringatan jika form belum lengkap
                 Toast.makeText(this, "Mohon isi semua kolom data!", Toast.LENGTH_SHORT).show()
             }
+
+            NotificationHelper.showNotification(
+                this, //Jika panggil di fragment maka requireContext()
+                "Notifikasi",
+                "Halo $nama, Berhasil ditambahkan!",
+                intent
+            )
         }
     }
 
