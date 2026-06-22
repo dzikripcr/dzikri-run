@@ -62,6 +62,18 @@ class TenthActivity : AppCompatActivity() {
                     badge.isVisible = true
                     badge.number = 10
                 }
+                3 -> {
+                    tab.text = "Kamera"
+                    tab.icon = ContextCompat.getDrawable(this, R.drawable.ic_kamera)
+                }
+                4 -> {
+                    tab.text = "QR Code"
+                    tab.icon = ContextCompat.getDrawable(this, R.drawable.ic_qr_code)
+                }
+                5 -> {
+                    tab.text = "Scan"
+                    tab.icon = ContextCompat.getDrawable(this, R.drawable.ic_scan)
+                }
             }
         }.attach()
 

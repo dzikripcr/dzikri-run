@@ -10,11 +10,6 @@ class ReminderReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
 
-        /**
-        Aksi yang dilakukan saat reminder berhasil dipanggil.
-        Dalam contoh ini ialah menampilkan NotificationHelper
-         **/
-
         val title           = intent.getStringExtra("title") ?: "Pengingat"
         val message         = intent.getStringExtra("message") ?: "Waktunya melakukan sesuatu"
         val targetClassName = intent.getStringExtra("target_activity")

@@ -39,7 +39,6 @@ class ProyekAdapter(
             root.setOnClickListener {
                 onItemClick(item)
             }
-
             btnDelete.setOnClickListener {
                 MaterialAlertDialogBuilder(holder.itemView.context)
                     .setTitle("Hapus Proyek")

@@ -2,11 +2,13 @@ package com.example.dzikri_run.Home.pertemuan2
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
@@ -47,6 +49,9 @@ class SecondActivity : AppCompatActivity() {
                 val s = sisi.toDouble()
                 val luas = s * s
                 tvHasilPersegi.text = "Hasil: $luas"
+                Toast.makeText(this, "Hasil: $luas", Toast.LENGTH_SHORT).show()
+                Log.d("PERSEGI", "Sisi: $s")
+                Log.d("PERSEGI", "Luas: $luas")
             } else {
                 tvHasilPersegi.text = "Masukkan nilai sisi!"
             }
@@ -64,6 +69,9 @@ class SecondActivity : AppCompatActivity() {
                 val s = sisi.toDouble()
                 val volume = s * s * s
                 tvHasilKubus.text = "Hasil: $volume"
+                Toast.makeText(this, "Hasil: $volume", Toast.LENGTH_SHORT).show()
+                Log.d("PERSEGI", "Sisi: $s")
+                Log.d("PERSEGI", "Luas: $volume")
             } else {
                 tvHasilKubus.text = "Masukkan nilai sisi!"
             }

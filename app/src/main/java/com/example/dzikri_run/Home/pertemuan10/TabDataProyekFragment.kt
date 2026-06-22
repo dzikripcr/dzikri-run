@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dzikri_run.Proyek.ProyekFormActivity
 import com.example.dzikri_run.data.AppDatabase
@@ -49,6 +50,10 @@ class TabDataProyekFragment : Fragment() {
             layoutManager = GridLayoutManager(requireContext(), 1)
             this.adapter = this@TabDataProyekFragment.adapter
         }
+
+        /** Tambah ini sebagai garis pemisah **/
+        val dividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        binding.rvProyek.addItemDecoration(dividerItemDecoration)
 
         fetchProyek()
 

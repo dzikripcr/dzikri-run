@@ -15,14 +15,11 @@ import com.example.dzikri_run.data.entity.WargaEntity
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
-
     abstract fun proyekDao(): ProyekDao
     //Tambahkan WargaDao
     abstract fun wargaDao(): WargaDao
-
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
-
         fun getInstance(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(

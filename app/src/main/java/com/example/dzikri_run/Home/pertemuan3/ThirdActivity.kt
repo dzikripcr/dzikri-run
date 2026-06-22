@@ -20,6 +20,7 @@ class ThirdActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         //Mengubah setContentView
         binding = ActivityThirdBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -32,30 +33,34 @@ class ThirdActivity : AppCompatActivity() {
 
 //        //Kode ini harus selalu dipanggil saat butuh akses "user_pref"
 //        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
-//
-////        //Kondisi jika isLogin bernilai true
-////        val isLogin = sharedPref.getBoolean("isLogin", false)
-////        if (isLogin) {
-////            //Panggil Intent untuk ke MainActivity
-////            val intent = Intent(this, MainActivity::class.java)
-////            startActivity(intent)S
-////        }
-//
-//        binding.btnLogin.setOnClickListener {
-//            val username = binding.username.text.toString()
-//            val password = binding.password.text.toString()
-//
-//            if (username == password && username.isNotEmpty() && password.isNotEmpty()){
+
+//        //Kondisi jika isLogin bernilai true
+//        val isLogin = sharedPref.getBoolean("isLogin", false)
+//        if (isLogin) {
+//            //Panggil Intent untuk ke MainActivity
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)S
+//        }
+
+        binding.btnLogin.setOnClickListener {
+            val username = binding.username.text.toString()
+            val password = binding.password.text.toString()
+
+            if (username == password && username.isNotEmpty() && password.isNotEmpty()){
 //                sharedPref.edit {
 //                    putBoolean("isLogin", true)
 //                    putString("username", username)
 //                }
-//
-//                val intent = Intent(this, MainActivity::class.java)
-//                startActivity(intent)
-//                finish()
-//
-//            }else{
+
+                val intent = Intent(this, ThirdResultActivity::class.java)
+
+                intent.putExtra("USERNAME", username)
+                intent.putExtra("PASSWORD", password)
+
+                startActivity(intent)
+
+            }
+//            else{
 //                MaterialAlertDialogBuilder(this)
 //                    .setTitle("Gagal")
 //                    .setMessage("Silahkan coba lagi")
@@ -65,6 +70,6 @@ class ThirdActivity : AppCompatActivity() {
 //                    }
 //                    .show()
 //            }
-//        }
+        }
     }
 }

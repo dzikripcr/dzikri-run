@@ -10,9 +10,7 @@ import androidx.core.app.NotificationCompat
 import com.example.dzikri_run.R
 
 object NotificationHelper {
-
     private const val CHANNEL_ID = "default_channel"
-
     fun showNotification(
         context: Context,
         title: String,
@@ -21,7 +19,6 @@ object NotificationHelper {
     ) {
         val manager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
@@ -30,12 +27,10 @@ object NotificationHelper {
             )
             manager.createNotificationChannel(channel)
         }
-
         val pending = PendingIntent.getActivity(
             context, 0, intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notif)
             .setContentTitle(title)

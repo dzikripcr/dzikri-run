@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dzikri_run.Home.news.NewsAdapter
 import com.example.dzikri_run.Home.pertemuan10.TenthActivity
 import com.example.dzikri_run.Home.pertemuan2.SecondActivity
+import com.example.dzikri_run.Home.pertemuan4.DashboardActivity
 import com.example.dzikri_run.Home.pertemuan6.WebViewActivity
 import com.example.dzikri_run.data.api.NewsApiClient
 import com.example.dzikri_run.databinding.FragmentHomeBinding
@@ -80,6 +81,15 @@ class HomeFragment : Fragment() {
                 Intent(
                     requireContext(),
                     TenthActivity::class.java
+                )
+            )
+        }
+
+        binding.btnToDashboard.setOnClickListener {
+            startActivity(
+                Intent(
+                    requireContext(),
+                    DashboardActivity::class.java
                 )
             )
         }

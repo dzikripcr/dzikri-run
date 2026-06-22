@@ -7,6 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".BaseActivity">
 
+    <View
+        android:id="@+id/background_header"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:backgroundTint="@color/primary"
+        android:background="@drawable/bg_header_wave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"

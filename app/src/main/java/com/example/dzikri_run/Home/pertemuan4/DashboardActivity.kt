@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.dzikri_run.AuthActivity
 import com.example.dzikri_run.R
 import com.example.dzikri_run.databinding.ActivityDashboardBinding
 import com.example.dzikri_run.Home.pertemuan2.SecondActivity
@@ -60,7 +61,7 @@ class DashboardActivity : AppCompatActivity() {
                     editor.clear()
 
                     //pindah ke halaman login
-                    val intent = Intent(this, ThirdActivity::class.java)
+                    val intent = Intent(this, AuthActivity::class.java)
                     startActivity(intent)
                     finish() // Activity lama dihapus dari stack
 
@@ -81,8 +82,8 @@ class DashboardActivity : AppCompatActivity() {
         }
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
-            title = "Cart"
-            subtitle = "Silahkan checkout!"
+            title = "Dashboard"
+            subtitle = "Selamat Datang!"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_back)
